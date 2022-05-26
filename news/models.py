@@ -22,7 +22,7 @@ class Post(models.Model):
     upvotes = models.ManyToManyField(User, related_name='post_upvotes_set', blank=True)
 
     class Meta:
-        order_by = ['-created_on']
+        ordering = ['-created_on']
 
     def __str__(self):
         return self.title
@@ -39,4 +39,4 @@ class Comment(models.Model):
     created_on = models.DateField(auto_now_add=True)
 
     class Meta:
-        order_by = ['-created_on']
+        ordering = ['-created_on']
