@@ -6,7 +6,7 @@ class Topic(models.Model):
     """ Topic model to create categories for posts """
     name = models.CharField(max_length=200)
 
-    def __ste__(self):
+    def __str__(self):
         return self.name
 
 
@@ -19,7 +19,7 @@ class Post(models.Model):
     last_updated = models.DateField(auto_now=True)
     content = models.TextField()
     created_on = models.DateField(auto_now_add=True)
-    likes = models.ManyToManyField(User, related_name='post_likes_set', blank=True)
+    upvotes = models.ManyToManyField(User, related_name='post_upvotes_set', blank=True)
 
     class Meta:
         order_by = ['-created_on']
@@ -27,8 +27,8 @@ class Post(models.Model):
         def __str__(self):
             return self.title
 
-        def number_of_likes(self):
-            return self.likes.count()
+        def number_of_upvotes(self):
+            return self.upvotes.count()
     
 
     class Comment(models.Model):
