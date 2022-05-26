@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Topic(models.Model):
+    """ Topic model to create categories for posts """
+    name = models.CharField(max_length=200)
+
+    def __ste__(self):
+        return self.name
+
 
 class Post(models.Model):
     """ Post model to create instances of posts """
