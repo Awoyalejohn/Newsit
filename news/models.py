@@ -24,19 +24,19 @@ class Post(models.Model):
     class Meta:
         order_by = ['-created_on']
 
-        def __str__(self):
-            return self.title
+    def __str__(self):
+        return self.title
 
-        def number_of_upvotes(self):
-            return self.upvotes.count()
+    def number_of_upvotes(self):
+        return self.upvotes.count()
     
 
-    class Comment(models.Model):
-        """ Comment model for comments inside posts """
-        post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comment_post_set')
-        user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment_user_set')
-        body = models.TextField()
-        created_on = models.DateField(auto_now_add=True)
+class Comment(models.Model):
+    """ Comment model for comments inside posts """
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comment_post_set')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment_user_set')
+    body = models.TextField()
+    created_on = models.DateField(auto_now_add=True)
 
-        class Meta:
-            order_by = ['-created_on']
+    class Meta:
+        order_by = ['-created_on']
