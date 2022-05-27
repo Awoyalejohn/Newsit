@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import CreateView
 from django.views import generic, View
 from .models import Post
+from .forms import PostForm
+
 
 
 class PostList(generic.ListView):
@@ -16,3 +19,21 @@ class PostDetail(View):
         post = get_object_or_404(queryset, slug=slug)
         context = {"post": post}
         return render(request, "post_detail.html", context)
+
+
+class PostCreate(CreateView):
+    template_name = 'post_create.html'
+    form_class = PostForm
+    queryset = Post.objects.all()
+
+
+
+
+
+
+
+
+
+
+
+ 

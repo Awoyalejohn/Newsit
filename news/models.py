@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from autoslug import AutoSlugField
 
 
 class Topic(models.Model):
@@ -13,7 +14,7 @@ class Topic(models.Model):
 class Post(models.Model):
     """ Post model to create instances of posts """
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_author_set')
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='post_topic_set')
     last_updated = models.DateField(auto_now=True)
@@ -23,6 +24,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+    
 
     def __str__(self):
         return self.title
