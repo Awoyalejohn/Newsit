@@ -9,11 +9,11 @@ admin.site.register(Topic)
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
     """ Admin interface for posts """
-    list_display = ('title', 'slug', 'topic', 'created_on', 'last_updated')
+    list_display = ('title', 'slug', 'author', 'topic', 'created_on')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('topic', 'created_on')
-    summernote_fields = ('content')
+    summernote_fields = ('content',)
 
 
 @admin.register(Comment)
