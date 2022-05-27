@@ -7,4 +7,4 @@ class PostForm(forms.ModelForm):
     """ Class for making forms in Django """
     class Meta:
         model = Post
-        fields = ("__all__")
+        fields = ("topic", "title", "content",)

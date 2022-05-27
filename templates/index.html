@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Create Post Button -->
+<a href="{% url 'post_create' %}" class="btn btn-dark">Create Post</a>
 <!-- Post list items -->
 {% for post in post_list %}
 <div class="card" style="width: 30rem;">

@@ -21,10 +21,21 @@ class PostDetail(View):
         return render(request, "post_detail.html", context)
 
 
-class PostCreate(CreateView):
-    template_name = 'post_create.html'
-    form_class = PostForm
-    queryset = Post.objects.all()
+class PostCreate(View):
+    def get(self, request, *args, **kwargs):
+        post = Post.objects.all()
+
+        post_form = PostForm(data=request.POST)
+
+        if post_form.is_valid():
+            post_form.instance.name = request.user.username
+            post_form.save()
+        else:
+            post_form = PostForm()
+        
+        context = {"post": post, "post_form": PostForm()}
+        return render(request, "post_create.html", context)
+    
 
 
 
