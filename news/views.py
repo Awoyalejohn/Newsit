@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView
 from django.views import generic, View
-from .models import Post
+from .models import Post, User
 from .forms import PostForm
+from django.urls import reverse
 
 
 
@@ -23,18 +24,18 @@ class PostDetail(View):
 
 class PostCreate(View):
     def get(self, request, *args, **kwargs):
-        post = Post.objects.all()
 
-        post_form = PostForm(data=request.POST)
-
-        if post_form.is_valid():
-            post_form.instance.name = request.user.username
-            post_form.save()
-        else:
-            post_form = PostForm()
-        
-        context = {"post": post, "post_form": PostForm()}
+        form = PostForm()
+        context = {'form': form}
         return render(request, "post_create.html", context)
+
+    def post(self, request, *args, **kwargs):
+
+        form = PostForm(request.POST)
+        form.instance.author = request.user
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('home'))
     
 
 

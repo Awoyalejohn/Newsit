@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
+<h1>Hello {{ request.user }}</h1>
+{% endif %}
 <!-- Create Post Button -->
 <a href="{% url 'post_create' %}" class="btn btn-dark">Create Post</a>
 <!-- Post list items -->
