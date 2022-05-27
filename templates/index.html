@@ -2,11 +2,17 @@
 
 {% block content %}
 <!-- Post list items -->
-<div>
-    {% for post in post_list %}
-    <p>{{post.title}}</p>
-    {% endfor %}
+{% for post in post_list %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted">Topic, Username, Date</h6>
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
 </div>
+{% endfor %}
 
 
 
