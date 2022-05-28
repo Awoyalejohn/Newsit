@@ -106,6 +106,23 @@ class PostUpdate(LoginRequiredMixin, View):
             return redirect(reverse('home'))
 
 
+class PostDelete(LoginRequiredMixin, View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+        context = {'post': post}
+        return render(request, "post_delete.html", context)
+        
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+        post.delete()
+        return redirect(reverse('home'))
+        
+
+
+
 
 
  
