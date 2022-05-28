@@ -4,6 +4,7 @@ from django.views import generic, View
 from .models import Post, User
 from .forms import PostForm
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -22,7 +23,7 @@ class PostDetail(View):
         return render(request, "post_detail.html", context)
 
 
-class PostCreate(View):
+class PostCreate(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
 
         form = PostForm()
