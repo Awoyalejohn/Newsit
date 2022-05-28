@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from  django.db.models import Q
 from django.views.generic import ListView
 from django.views import generic, View
@@ -37,8 +37,11 @@ class PostDetail(View):
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comment_post_set.all()
         comment_form = CommentForm()
+        upvoted = False
+        if post.upvotes.filter(id=self.request.user.id).exists():
+            upvoted = True
         
-        context = {"post": post, "comments": comments, "comment_form": comment_form}
+        context = {"post": post, "comments": comments, "comment_form": comment_form, "upvoted": upvoted}
         return render(request, "post_detail.html", context)
 
     def post(self, request, slug, *args, **kwargs):
@@ -71,6 +74,17 @@ class PostCreate(LoginRequiredMixin, View):
     
 
 
+class PostUpvote(View):
+
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+
+        if post.upvotes.filter(id=request.user.id).exists():
+            post.upvotes.remove(request.user)
+        else:
+            post.upvotes.add(request.user)
+        
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 

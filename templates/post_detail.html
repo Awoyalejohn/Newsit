@@ -1,16 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Post view card -->
 <div class="card" style="width: 30rem;">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by {{ post.author }} {{ post.created_on }}</h6>
-      <h5 class="card-title">{{ post.title }}</h5>
-      <p class="card-text">{{ post.content | safe }}</p>
-      <p><i class="bi bi-arrow-up-circle"></i> Upvotes</p>
-      <p><i class="bi bi-chat-left"></i> Comments</p>
-      <a href="#" class="btn btn-light">Edit</a>
-      <a href="#" class="btn btn-dark">Delete</a>
-    </div>
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by {{ post.author }} {{ post.created_on }}</h6>
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.content | safe }}</p>
+    {% if user.is_authenticated %}
+    <form class="d-inline" action="{% url 'post_upvote' post.slug %}" method="POST">
+      {% csrf_token %}  
+      {% if upvoted %}  
+  
+      <button type="submit" name="newspost_id" value="{{ post.slug }}"  class="btn">
+        <i class="bi bi-arrow-up-circle-fill"></i>
+      </button>
+  
+      {% else %}  
+  
+      <button type="submit" name="newspost_id" value="{{ post.slug }}"  class="btn">
+        <i class="bi bi-arrow-up-circle"></i>
+    </button>
+      {% endif %}  
+    </form>
+    {% else %}
+    <span class="text-secondary"><i class="bi bi-arrow-up-circle"></i></span>
+    {% endif %}
+    <span class="text-secondary">{{ post.number_of_upvotes }}</span>
+    <p><i class="bi bi-chat-left"></i> Comments</p>
+    <a href="#" class="btn btn-light">Edit</a>
+    <a href="#" class="btn btn-dark">Delete</a>
+  </div>
 
     {% if request.user.is_authenticated %}
     <div class="card-body">
