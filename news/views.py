@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import CreateView
+from django.views.generic import ListView
 from django.views import generic, View
-from .models import Post, User, Comment
+from .models import Post, User, Comment, Topic
 from .forms import PostForm, CommentForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,9 +10,18 @@ from django.http import HttpResponseRedirect
 
 
 class PostList(generic.ListView):
-    model = Post()
-    queryset = Post.objects.all()
     template_name = 'index.html'
+    context_object_name = 'list_posts'
+    model = Post
+    queryset = Post.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(PostList, self).get_context_data(**kwargs)
+        context['list_topics'] = Topic.objects.all()
+        return context
+    
+
+
 
 
 class PostDetail(View):
