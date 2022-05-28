@@ -12,6 +12,7 @@
       <a href="#" class="btn btn-dark">Delete</a>
     </div>
 
+    {% if request.user.is_authenticated %}
     <div class="card-body">
       <p>Comment as {{ request.user }}</p>
       <form method="POST" action="">
@@ -20,6 +21,7 @@
         <button type="submit" class="btn btn-dark">Comment</button>
       </form>
     </div>
+    {% endif %}
     
     <hr>
     <div class="card-body">

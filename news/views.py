@@ -5,6 +5,7 @@ from .models import Post, User, Comment
 from .forms import PostForm, CommentForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 
 
 
@@ -20,12 +21,22 @@ class PostDetail(View):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comment_post_set.all()
-        context = {"post": post, "comments": comments, "comment_form": CommentForm()}
-
+        comment_form = CommentForm()
         
-
-
+        context = {"post": post, "comments": comments, "comment_form": comment_form}
         return render(request, "post_detail.html", context)
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+        comment_form = CommentForm(request.POST)
+        comment_form.instance.user = request.user
+        comment_form.instance.post = post
+        if comment_form.is_valid():
+            comment_form.save()
+            return HttpResponseRedirect(self.request.path_info)
+
+
 
 
 class PostCreate(LoginRequiredMixin, View):
