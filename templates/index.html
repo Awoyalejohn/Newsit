@@ -25,7 +25,7 @@
       <p><i class="bi bi-arrow-up-circle"></i> Upvotes</p>
       <p><i class="bi bi-chat-left"></i> Comments</p>
       <a href="{% url 'post_update' post.slug %}" class="btn btn-light">Edit</a>
-      <a href="#" class="btn btn-dark">Delete</a>
+      <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
     </div>
 </div>
 {% endfor %}
