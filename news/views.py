@@ -1,22 +1,25 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from  django.db.models import Q
 from django.views.generic import ListView
 from django.views import generic, View
-from .models import Post, User, Comment, Topic
-from .forms import PostForm, CommentForm
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from .forms import PostForm, CommentForm
+from .models import Post, User, Comment, Topic
 
 
 
 class PostList(View):
 
     def get(self, request, *args, **kwargs):
-        
-       
         q = request.GET.get('q') if request.GET.get('q') != None else ''
 
-        posts = Post.objects.filter(topic__name__icontains=q)
+        posts = Post.objects.filter(
+            Q(topic__name__icontains=q) |
+            Q(author__username__icontains=q) |
+            Q(title__icontains=q)
+            )
         topics = Topic.objects.all()
 
 
