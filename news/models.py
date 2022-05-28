@@ -7,6 +7,7 @@ class Topic(models.Model):
     """ Topic model to create categories for posts """
     name = models.CharField(max_length=200, unique=True)
 
+
     def __str__(self):
         return self.name
 

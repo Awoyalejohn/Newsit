@@ -9,17 +9,20 @@ from django.http import HttpResponseRedirect
 
 
 
-class PostList(generic.ListView):
-    template_name = 'index.html'
-    context_object_name = 'list_posts'
-    model = Post
-    queryset = Post.objects.all()
+class PostList(View):
 
-    def get_context_data(self, **kwargs):
-        context = super(PostList, self).get_context_data(**kwargs)
-        context['list_topics'] = Topic.objects.all()
-        return context
-    
+    def get(self, request, *args, **kwargs):
+        
+       
+        q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+        posts = Post.objects.filter(topic__name__icontains=q)
+        topics = Topic.objects.all()
+
+
+        context = {"posts": posts, "topics": topics}
+        return render(request, "index.html", context)
+
 
 
 
