@@ -11,6 +11,21 @@
       <a href="#" class="btn btn-light">Edit</a>
       <a href="#" class="btn btn-dark">Delete</a>
     </div>
+
+    <div class="card-body">
+      <p>Comment as {{ request.user }}</p>
+    </div>
+    
+    <hr>
+    <div class="card-body">
+      <h2 style="text-align: center;">Comments</h2>
+    </div>
+    {% for comment in comments %}
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on }}</h6>
+      <p class="card-text">{{ comment.body | safe }}</p>
+    </div>
+    {% endfor %}
 </div>
 
 

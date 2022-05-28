@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView
 from django.views import generic, View
-from .models import Post, User
+from .models import Post, User, Comment
 from .forms import PostForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,7 +19,8 @@ class PostDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
-        context = {"post": post}
+        comments = post.comment_post_set.all()
+        context = {"post": post, "comments": comments}
         return render(request, "post_detail.html", context)
 
 
