@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from  django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView, UpdateView
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -89,7 +89,21 @@ class PostUpvote(View):
 
 
 
+class PostUpdate(LoginRequiredMixin, View):
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+        form = PostForm(instance=post)
+        context = {'post': post,'form': form}
+        return render(request, "post_update.html", context)
 
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.all()
+        post = get_object_or_404(queryset, slug=slug)
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('home'))
 
 
 
