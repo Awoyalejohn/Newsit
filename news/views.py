@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PostForm, CommentForm
 from .models import Post, User, Comment, Topic
 from django.template.defaultfilters import slugify
+from django.contrib import messages
 
 
 
@@ -53,6 +54,7 @@ class PostDetail(View):
         comment_form.instance.post = post
         if comment_form.is_valid():
             comment_form.save()
+            messages.success(request, 'Comment was successful')
             return HttpResponseRedirect(self.request.path_info)
 
 
@@ -71,6 +73,7 @@ class PostCreate(LoginRequiredMixin, View):
         form.instance.author = request.user
         if form.is_valid():
             form.save()
+            messages.success(request, 'Post was created successfuly')
             return redirect(reverse('home'))
     
 
@@ -106,6 +109,7 @@ class PostUpdate(LoginRequiredMixin, View):
             form.save()
             post.slug = slugify(form.instance.title)
             post.save()
+            messages.success(request, 'Post was updated successfully')
             return redirect(reverse('home'))
 
 
@@ -121,6 +125,7 @@ class PostDelete(LoginRequiredMixin, View):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
         post.delete()
+        messages.success(request, 'Post was deleted successfully')
         return redirect(reverse('home'))
 
 
@@ -142,6 +147,7 @@ class CommentUpdate(View):
         
         if comment_form.is_valid():
             comment_form.save()
+            messages.success(request, 'Updated comment successfully')
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
@@ -156,6 +162,7 @@ class CommentDelete(View):
         slug = post_slug.slug
         comment = get_object_or_404(Comment, id=comment_id)
         comment.delete()
+        messages.success(request, 'Comment has been deleted')
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
