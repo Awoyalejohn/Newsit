@@ -22,6 +22,7 @@ class PostList(View):
             Q(author__username__icontains=q) |
             Q(title__icontains=q)
             )
+        
         topics = Topic.objects.all()
 
 
@@ -38,12 +39,13 @@ class PostDetail(View):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comment_post_set.all()
+        number_of_comments = comments.count()
         comment_form = CommentForm()
         upvoted = False
         if post.upvotes.filter(id=self.request.user.id).exists():
             upvoted = True
         
-        context = {"post": post, "comments": comments, "comment_form": comment_form, "upvoted": upvoted}
+        context = {"post": post, "comments": comments, "comment_form": comment_form, "upvoted": upvoted, 'number_of_comments': number_of_comments}
         return render(request, "post_detail.html", context)
 
     def post(self, request, slug, *args, **kwargs):
