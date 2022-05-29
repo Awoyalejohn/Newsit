@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import PostForm, CommentForm
 from .models import Post, User, Comment, Topic
+from django.template.defaultfilters import slugify
 
 
 
@@ -103,6 +104,8 @@ class PostUpdate(LoginRequiredMixin, View):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
+            post.slug = slugify(form.instance.title)
+            post.save()
             return redirect(reverse('home'))
 
 
@@ -119,10 +122,25 @@ class PostDelete(LoginRequiredMixin, View):
         post = get_object_or_404(queryset, slug=slug)
         post.delete()
         return redirect(reverse('home'))
+
+
+
+class CommentUpdate(View):
+
+    def get(self, request, comment_id, *args, **kwargs):
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment_form = CommentForm(instance=comment)
         
+        context = {'comment_form': comment_form}
+        return render(request, "comment_update.html", context)
 
+    def post(self, request, slug, comment_id, *args, **kwargs):
+        post_slug = get_object_or_404(Post, slug=slug)
+        slug = post_slug.slug
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment_form = CommentForm(request.POST, instance=comment)
+        
+        if comment_form.is_valid():
+            comment_form.save()
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
-
-
-
- 
