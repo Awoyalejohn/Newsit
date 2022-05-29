@@ -51,8 +51,8 @@
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
       <p class="card-text">{{ comment.body | safe }}</p>
-      <a href="{{ comment.id }}" class="btn btn-light">Edit</a>
-      <a href="#" class="btn btn-dark">Delete</a>
+      <a href="{{ comment.id }}/comment_update/" class="btn btn-light">Edit</a>
+      <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
     </div>
     {% endfor %}
 </div>

@@ -144,3 +144,17 @@ class CommentUpdate(View):
             comment_form.save()
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
+class CommentDelete(View):
+    def get(self, request, comment_id, *args, **kwargs):
+        comment = get_object_or_404(Comment, id=comment_id)
+        context = {'comment': comment}
+        return render(request, "comment_delete.html", context)
+
+    def post(self, request, slug, comment_id, *args, **kwargs):
+        post_slug = get_object_or_404(Post, slug=slug)
+        slug = post_slug.slug
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment.delete()
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
