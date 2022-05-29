@@ -78,7 +78,7 @@ class PostCreate(LoginRequiredMixin, View):
     
 
 
-class PostUpvote(View):
+class PostUpvote(LoginRequiredMixin, View):
 
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
@@ -130,7 +130,7 @@ class PostDelete(LoginRequiredMixin, View):
 
 
 
-class CommentUpdate(View):
+class CommentUpdate(LoginRequiredMixin, View):
 
     def get(self, request, comment_id, *args, **kwargs):
         comment = get_object_or_404(Comment, id=comment_id)
@@ -151,7 +151,7 @@ class CommentUpdate(View):
             return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class CommentDelete(View):
+class CommentDelete(LoginRequiredMixin, View):
     def get(self, request, comment_id, *args, **kwargs):
         comment = get_object_or_404(Comment, id=comment_id)
         context = {'comment': comment}

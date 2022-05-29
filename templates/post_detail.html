@@ -28,8 +28,11 @@
     {% endif %}
     <span class="text-secondary">{{ post.number_of_upvotes }}</span>
     <p><i class="bi bi-chat-left"></i> Comments</p>
+
+    {% if request.user == post.author %}
     <a href="{% url 'post_update' post.slug %}" class="btn btn-light">Edit</a>
     <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
+    {% endif %}
   </div>
 
   {% if request.user.is_authenticated %}
@@ -51,8 +54,11 @@
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
       <p class="card-text">{{ comment.body | safe }}</p>
+
+      {% if request.user == comment.user %}
       <a href="{{ comment.id }}/comment_update/" class="btn btn-light">Edit</a>
       <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
+      {% endif %}
     </div>
     {% endfor %}
 </div>
