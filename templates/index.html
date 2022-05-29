@@ -15,7 +15,7 @@
   <div class="col-8">
       <!-- Post list items -->
 {% for post in posts %}
-<div class="card" style="width: 30rem;">
+<div class="card">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
       <a href="{% url 'post_detail' post.slug %}" class="post-link">
@@ -26,7 +26,7 @@
       <p><i class="bi bi-chat-left"></i> Comments</p>
 
       {% if request.user == post.author %}
-      <a href="{% url 'post_update' post.slug %}" class="btn btn-light">Edit</a>
+      <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
       <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
       {% endif %}
     </div>
@@ -36,7 +36,19 @@
   </div>
 
   <div class="col-4">
-     <!-- list topics -->
+    {% if not request.user.is_authenticated %}
+    <!-- Welcome message for new users -->
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h2 class="card-title">Welcome</h2>
+        <p class="card-text">Welcome to Discuss Tech A website where your can find news and discussion about Tech.
+          To post you need to sign up for an account
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+     <!-- list topic Categories -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
@@ -45,13 +57,13 @@
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="{% url 'home' %}" class="nav-link active" aria-current="page">All Topics</a>
+          <a href="{% url 'home' %}" class="nav-link" aria-current="page">All Topics</a>
         </li>
        
         
         {% for topic in topics %}
         <li class="nav-item">
-          <a href="{% url 'home'  %}?q={{topic.name}}" class="nav-link active" aria-current="page">{{ topic.name }}</a>
+          <a href="{% url 'home'  %}?q={{topic.name}}" class="nav-link" aria-current="page">{{ topic.name }}</a>
         </li>
         {% endfor %}
 

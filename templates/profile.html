@@ -31,7 +31,7 @@
   <div class="col-4">
     <!-- User posts -->
     {% for post in posts %}
-    <div class="card" style="width: 25rem;">
+    <div class="card">
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
             href="{% url 'profile' post.author %}">{{ post.author }}</a> {{ post.created_on }}</h6>
@@ -43,7 +43,7 @@
         <p><i class="bi bi-chat-left"></i> Comments</p>
 
         {% if request.user == post.author %}
-        <a href="{% url 'post_update' post.slug %}" class="btn btn-light">Edit</a>
+        <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
         <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
         {% endif %}
       </div>
@@ -55,15 +55,17 @@
   <!-- Comments card -->
   <div class="col-4">
     {% for comment in comments %}
+    <div class="card">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
       <p class="card-text">{{ comment.body | safe }}</p>
 
       {% if request.user == comment.user %}
-      <a href="{{ comment.id }}/comment_update/" class="btn btn-light">Edit</a>
+      <a href="{{ comment.id }}/comment_update/" class="btn btn-primary">Edit</a>
       <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
       {% endif %}
     </div>
+  </div>
     {% endfor %}
 
 

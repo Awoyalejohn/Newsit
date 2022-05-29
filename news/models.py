@@ -18,9 +18,9 @@ class Post(models.Model):
     slug = AutoSlugField(populate_from='title')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_author_set')
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='post_topic_set')
-    last_updated = models.DateField(auto_now=True)
+    last_updated = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    created_on = models.DateField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     upvotes = models.ManyToManyField(User, related_name='post_upvotes_set', blank=True)
 
     class Meta:
@@ -39,7 +39,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comment_post_set')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment_user_set')
     body = models.TextField()
-    created_on = models.DateField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-created_on']
