@@ -158,3 +158,15 @@ class CommentDelete(View):
         comment.delete()
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
+
+class Profile(View):
+    def get(self, request, pk, *args, **kwargs):
+        user = User.objects.get(id=pk)
+        posts = user.post_author_set.all()
+        comments = user.comment_user_set.all()
+
+
+        context = {'user': user, 'posts': posts, 'comments': comments}
+        return render(request, 'profile.html', context)
+

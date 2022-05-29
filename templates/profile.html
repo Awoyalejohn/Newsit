@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-5">
+    <!-- Posts title -->
+    <div class="card" style="width: 15rem;">
+      <div class="card-body">
+        <h3 class="card-title">Posts</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-5">
+    <!-- Comments title -->
+    <div class="card" style="width: 15rem;">
+      <div class="card-body">
+        <h3 class="card-title">Comments</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- starts here-->
+<div class="row">
+
+  <div class="col-4">
+    <!-- User posts -->
+    {% for post in posts %}
+    <div class="card" style="width: 25rem;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
+            href="{% url 'profile' post.author %}">{{ post.author }}</a> {{ post.created_on }}</h6>
+        <a href="{% url 'post_detail' post.slug %}" class="post-link">
+          <h5 class="card-title">{{ post.title }}</h5>
+        </a>
+        <p class="card-text">{{ post.content | safe }}</p>
+        <p><i class="bi bi-arrow-up-circle"></i> Upvotes</p>
+        <p><i class="bi bi-chat-left"></i> Comments</p>
+        <a href="{% url 'post_update' post.slug %}" class="btn btn-light">Edit</a>
+        <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+  <!-- Comments card -->
+  <div class="col-4">
+    {% for comment in comments %}
+    <div class="card-body">
+      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
+      <p class="card-text">{{ comment.body | safe }}</p>
+      <a href="{{ comment.id }}/comment_update/" class="btn btn-light">Edit</a>
+      <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
+    </div>
+    {% endfor %}
+
+
+  </div>
+
+
+  <div class="col-4">
+    <!-- Username card -->
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h1 class="card-title">{{ user.username }}'s profile</h1>
+        <a href="#" class="btn btn-dark">New Post</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
