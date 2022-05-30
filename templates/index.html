@@ -15,7 +15,7 @@
   <div class="col-md-8 col-sm-12" >
       <!-- Post list items -->
 {% for post in posts %}
-<div class="card mb-3" style="max-width: 100%;">
+<div class="card mb-3 mt-3" style="max-width: 100%;">
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
       <a href="{% url 'post_detail' post.slug %}" class="post-link">
@@ -37,20 +37,28 @@
   <div class="col-4 d-none d-md-block">
     {% if not request.user.is_authenticated %}
     <!-- Welcome message for new users -->
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h2 class="card-title">Welcome</h2>
-        <p class="card-text">Welcome to Discuss Tech A website where your can find news and discussion about Tech.
-          To post you need to sign up for an account
-        </p>
-      </div>
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-white mb-3 mt-3" style="width: 280px;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">Welcome</span>
+      </a>
+      <hr>
+      <p>Welcome to Discuss Tech. A website where your can find news and discussion about Tech.
+        To make a post you need to sign up for an account.
+      </p>
     </div>
     {% endif %}
+
+
+    <!--other-->
+  
+
+
 
      <!-- list topic Categories -->
 
      
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light " style="width: 280px;">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-white mt-3" style="width: 280px;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
         <span class="fs-4">Categories</span>
@@ -68,7 +76,6 @@
         </li>
         {% endfor %}
 
-      
       </ul>
     </div>
 

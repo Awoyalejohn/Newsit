@@ -4,7 +4,7 @@
 
 <!-- Username card -->
 
-<div class="card" style="width: 100%;">
+<div class="card mt-2 mb-2" style="width: 100%;">
   <div class="card-body" style="text-align: center;">
     <h1 class="card-title">{{ user.username }}'s profile</h1>
   </div>
@@ -68,10 +68,6 @@
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
       <p class="card-text">{{ comment.body | safe }}</p>
 
-      {% if request.user == comment.user %}
-      <a href="{{ comment.id }}/comment_update/" class="btn btn-primary">Edit</a>
-      <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
-      {% endif %}
     </div>
   </div>
     {% endfor %}

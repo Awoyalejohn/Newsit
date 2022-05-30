@@ -2,13 +2,17 @@
 
 {% block content %}
 <!-- Post Delete Form -->
+<div class="d-flex justify-content-center mt-5">
+<div class="card">
 <form method="POST" action=".">
   {% csrf_token %}
   <p>Are you sure you want to delete {{ post.title }}?</p>
-  <a href="{{ request.META.HTTP_REFERER }}">Go Back</a>
+  <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Go Back</a>
   <input type="submit" value="Cofirm" class="btn btn-dark">
     
 </form>
+</div>
+</div>
 
 
 {% endblock %}
