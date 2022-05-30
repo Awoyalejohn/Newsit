@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<!-- Username card -->
+
+<div class="card" style="width: 100%;">
+  <div class="card-body" style="text-align: center;">
+    <h1 class="card-title">{{ user.username }}'s profile</h1>
+  </div>
+</div>
+<div class="card">
+
 <div class="row">
   <div class="col-5">
     <!-- Posts title -->
-    <div class="card" style="width: 15rem;">
+    <div style="text-align: center;">
       <div class="card-body">
         <h3 class="card-title">Posts</h3>
       </div>
@@ -14,7 +24,7 @@
 
   <div class="col-5">
     <!-- Comments title -->
-    <div class="card" style="width: 15rem;">
+    <div  style="text-align: center;">
       <div class="card-body">
         <h3 class="card-title">Comments</h3>
       </div>
@@ -28,10 +38,10 @@
 <!-- starts here-->
 <div class="row">
 
-  <div class="col-4">
+  <div class="col-6">
     <!-- User posts -->
     {% for post in posts %}
-    <div class="card">
+    <div>
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
             href="{% url 'profile' post.author %}">{{ post.author }}</a> {{ post.created_on }}</h6>
@@ -39,8 +49,6 @@
           <h5 class="card-title">{{ post.title }}</h5>
         </a>
         <p class="card-text">{{ post.content |slice:":200" }}</p>
-        <p><i class="bi bi-arrow-up-circle"></i> Upvotes</p>
-        <p><i class="bi bi-chat-left"></i> Comments</p>
 
         {% if request.user == post.author %}
         <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
@@ -53,9 +61,9 @@
 </div>
 
   <!-- Comments card -->
-  <div class="col-4">
+  <div class="col-6">
     {% for comment in comments %}
-    <div class="card">
+    <div>
     <div class="card-body">
       <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
       <p class="card-text">{{ comment.body | safe }}</p>
@@ -72,21 +80,10 @@
   </div>
 
 
-  <div class="col-4">
-    <!-- Username card -->
-
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h1 class="card-title">{{ user.username }}'s profile</h1>
-        {% if request.user.is_authenticated %}
-        <a href="#" class="btn btn-dark">New Post</a>
-        {% endif %}
-      </div>
-    </div>
-
-  </div>
-
 </div>
+ 
+</div>
+
 
 
 

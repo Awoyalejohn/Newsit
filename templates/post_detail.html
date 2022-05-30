@@ -4,14 +4,15 @@
 
 <div class="row">
 
-  <div class="col-6">
+  <div class="col-lg-8 col-sm-12">
     <!-- Post view card -->
-<div class="card">
+<div class="card" style="max-width: 100%;">
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by {{ post.author }} {{ post.created_on }}</h6>
     <h5 class="card-title">{{ post.title }}</h5>
     <p class="card-text">{{ post.content | safe }}</p>
     {% if user.is_authenticated %}
+    <div class="form-group">
     <form class="d-inline" action="{% url 'post_upvote' post.slug %}" method="POST">
       {% csrf_token %}  
       {% if upvoted %}  
@@ -27,6 +28,7 @@
     </button>
       {% endif %}  
     </form>
+  </div>
     {% else %}
     <span class="text-secondary"><i class="bi bi-arrow-up-circle"></i></span>
     {% endif %}
@@ -74,7 +76,7 @@
 
 
 
-  <div class="col-4">
+  <div class="col-4 d-none d-lg-block">
     {% if not request.user.is_authenticated %}
     <!-- Welcome message for new users -->
     <div class="card" style="width: 18rem;">
