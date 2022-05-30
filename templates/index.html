@@ -2,9 +2,8 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-<h1>Hello {{ request.user }}</h1>
 <!-- Create Post Button -->
-<a href="{% url 'post_create' %}" class="btn btn-dark">Create Post</a>
+<a href="{% url 'post_create' %}" class="btn btn-dark mt-3">Create Post <i class="bi bi-plus-lg"></i></a>
 {% endif %}
 
 
