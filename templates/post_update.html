@@ -2,7 +2,7 @@
 
 {% block content %}
 <!-- Post Update Form -->
-<form method="POST" action="." style="max-width: 80%;>
+<form method="POST" action="." style="max-width: 80%;">
   {% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Post" class="btn btn-dark">

@@ -4,7 +4,7 @@
 <!-- Comment Update Form -->
 <div class="card-body">
   <p>Comment as {{ request.user }}</p>
-  <form method="POST" action="" style="max-width: 80%;>
+  <form method="POST" action="" style="max-width: 80%;">
     {% csrf_token %}
     {{ comment_form }}
     <button type="submit" class="btn btn-dark">update comment</button>
