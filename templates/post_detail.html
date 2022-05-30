@@ -6,7 +6,7 @@
 
   <div class="col-lg-8 col-sm-12">
     <!-- Post view card -->
-<div class="card" style="max-width: 100%;">
+<div class="card mt-3" style="max-width: 100%;">
   <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by {{ post.author }} {{ post.created_on }}</h6>
     <h5 class="card-title">{{ post.title }}</h5>
@@ -79,7 +79,7 @@
   <div class="col-4 d-none d-lg-block">
     {% if not request.user.is_authenticated %}
     <!-- Welcome message for new users -->
-    <div class="card" style="width: 18rem;">
+    <div class="card mt-3" style="width: 18rem;">
       <div class="card-body">
         <h2 class="card-title">Welcome</h2>
         <p class="card-text">If you would like to post a comment. You can sign up
@@ -89,10 +89,10 @@
     {% endif %}
 
     <!-- basic card-->
-<div class="card" style="width: 18rem;">
+<div class="card mt-3" style="width: 18rem;">
   <div class="card-body">
     <h3 class="card-title">Reminder to be polite</h3>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Show respect for people's opinions, ideas, language, attitude to life, personal preferences.</p>
   </div>
 </div>
 
