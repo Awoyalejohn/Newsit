@@ -44,7 +44,7 @@
     <div>
       <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
-            href="{% url 'profile' post.author %}">{{ post.author }}</a> {{ post.created_on }}</h6>
+            href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
         <a href="{% url 'post_detail' post.slug %}" class="post-link">
           <h5 class="card-title">{{ post.title }}</h5>
         </a>
