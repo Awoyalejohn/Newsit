@@ -20,19 +20,22 @@
       <button type="submit" name="newspost_id" value="{{ post.slug }}"  class="btn">
         <i class="bi bi-arrow-up-circle-fill"></i>
       </button>
+      <span class="text-secondary">{{ post.number_of_upvotes }}</span>
   
       {% else %}  
   
       <button type="submit" name="newspost_id" value="{{ post.slug }}"  class="btn">
         <i class="bi bi-arrow-up-circle"></i>
-    </button>
+      </button>
+      <span class="text-secondary">{{ post.number_of_upvotes }}</span>
       {% endif %}  
     </form>
   </div>
     {% else %}
     <span class="text-secondary"><i class="bi bi-arrow-up-circle"></i></span>
-    {% endif %}
     <span class="text-secondary">{{ post.number_of_upvotes }}</span>
+    {% endif %}
+    
     <p><i class="bi bi-chat-left"></i> {{number_of_comments}} Comments</p>
 
     {% if request.user == post.author %}
