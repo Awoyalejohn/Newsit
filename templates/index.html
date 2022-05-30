@@ -7,29 +7,28 @@
 {% endif %}
 
 
-
-
 <div class="row">
 
-  <div class="col-md-8 col-sm-12" >
-      <!-- Post list items -->
-{% for post in posts %}
-<div class="card mb-3 mt-3" style="max-width: 100%;">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
-      <a href="{% url 'post_detail' post.slug %}" class="post-link">
-        <h5 class="card-title">{{ post.title }}</h5>   
-      </a>
-      <p class="card-text">{{ post.content|slice:":200" }}</p>
+  <div class="col-md-8 col-sm-12">
+    <!-- Post list items -->
+    {% for post in posts %}
+    <div class="card mb-3 mt-3" style="max-width: 100%;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
+            href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
+        <a href="{% url 'post_detail' post.slug %}" class="post-link">
+          <h5 class="card-title">{{ post.title }}</h5>
+        </a>
+        <p class="card-text">{{ post.content|slice:":200" }}</p>
 
-
-      {% if request.user == post.author %}
-      <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
-      <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
-      {% endif %}
+        <!-- Checks if the post belongs to the user before displaying it -->
+        {% if request.user == post.author %}
+        <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
+        {% endif %}
+      </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
 
   </div>
 
@@ -38,7 +37,8 @@
     <!-- Welcome message for new users -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-white mb-3 mt-3" style="width: 280px;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <svg class="bi pe-none me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" /></svg>
         <span class="fs-4">Welcome</span>
       </a>
       <hr>
@@ -48,18 +48,11 @@
     </div>
     {% endif %}
 
-
-    <!--other-->
-  
-
-
-
-     <!-- list topic Categories -->
-
-     
+    <!-- list topic Categories -->
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-white mt-3" style="width: 280px;">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <svg class="bi pe-none me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" /></svg>
         <span class="fs-4">Categories</span>
       </a>
       <hr>
@@ -67,8 +60,8 @@
         <li class="nav-item">
           <a href="{% url 'home' %}" class="nav-link" aria-current="page">All Topics</a>
         </li>
-       
-        
+
+
         {% for topic in topics %}
         <li class="nav-item">
           <a href="{% url 'home'  %}?q={{topic.name}}" class="nav-link" aria-current="page">{{ topic.name }}</a>
@@ -78,19 +71,8 @@
       </ul>
     </div>
 
-
-
   </div>
 
-
-
-
 </div>
-
-
-
-
-
-
 
 {% endblock %}

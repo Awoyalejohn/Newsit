@@ -3,7 +3,6 @@
 {% block content %}
 
 <!-- Username card -->
-
 <div class="card mt-2 mb-2" style="width: 100%;">
   <div class="card-body" style="text-align: center;">
     <h1 class="card-title">{{ user.username }}'s profile</h1>
@@ -11,90 +10,74 @@
 </div>
 <div class="card">
 
-<div class="row">
-  <div class="col-5">
-    <!-- Posts title -->
-    <div style="text-align: center;">
-      <div class="card-body">
-        <h3 class="card-title">Posts</h3>
+  <div class="row">
+    <div class="col-5">
+      <!-- Posts title -->
+      <div style="text-align: center;">
+        <div class="card-body">
+          <h3 class="card-title">Posts</h3>
+        </div>
       </div>
+
     </div>
 
-  </div>
-
-  <div class="col-5">
-    <!-- Comments title -->
-    <div  style="text-align: center;">
-      <div class="card-body">
-        <h3 class="card-title">Comments</h3>
+    <div class="col-5">
+      <!-- Comments title -->
+      <div style="text-align: center;">
+        <div class="card-body">
+          <h3 class="card-title">Comments</h3>
+        </div>
       </div>
+
     </div>
-
   </div>
-</div>
 
 
+  <!-- starts here-->
+  <div class="row">
 
-<!-- starts here-->
-<div class="row">
+    <div class="col-6">
+      <!-- User posts -->
+      {% for post in posts %}
+      <div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
+              href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
+          <a href="{% url 'post_detail' post.slug %}" class="post-link">
+            <h5 class="card-title">{{ post.title }}</h5>
+          </a>
+          <p class="card-text">{{ post.content |slice:":200" }}</p>
 
-  <div class="col-6">
-    <!-- User posts -->
-    {% for post in posts %}
-    <div>
-      <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by <a
-            href="{% url 'profile' post.author.id %}">{{ post.author }}</a> {{ post.created_on }}</h6>
-        <a href="{% url 'post_detail' post.slug %}" class="post-link">
-          <h5 class="card-title">{{ post.title }}</h5>
-        </a>
-        <p class="card-text">{{ post.content |slice:":200" }}</p>
-
-        {% if request.user == post.author %}
-        <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
-        <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
-        {% endif %}
+          {% if request.user == post.author %}
+          <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
+          {% endif %}
+        </div>
       </div>
-    </div>
-    {% endfor %}
-
-</div>
-
-  <!-- Comments card -->
-  <div class="col-6">
-    {% for comment in comments %}
-    <div>
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
-      <p class="card-text">{{ comment.body | safe }}</p>
+      {% endfor %}
 
     </div>
-  </div>
-    {% endfor %}
+
+    <!-- Comments card -->
+    <div class="col-6">
+      {% for comment in comments %}
+      <div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong>
+            {{ comment.created_on|timesince }}</h6>
+          <p class="card-text">{{ comment.body | safe }}</p>
+
+        </div>
+      </div>
+      {% endfor %}
+
+
+    </div>
 
 
   </div>
 
-
 </div>
- 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {% endblock %}

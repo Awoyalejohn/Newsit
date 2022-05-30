@@ -8,16 +8,16 @@
   <div class="col-lg-6 col-sm-12">
     <!-- Post Create Form -->
     <div class="form-group">
-<form method="POST" action="." style="max-width: 100%;">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Post" class="btn btn-dark">
+      <form method="POST" action="." style="max-width: 100%;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Post" class="btn btn-dark">
 
-</form>
-</div>
+      </form>
+    </div>
 
   </div>
-<!-- Information Card-->
+  <!-- Information Card-->
   <div class="col-4 d-none d-lg-block">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
@@ -28,13 +28,6 @@
 
   </div>
 </div>
-
-
-
-
-
-
-
 
 
 {% endblock %}

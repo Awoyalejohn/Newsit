@@ -6,73 +6,81 @@
 
   <div class="col-lg-8 col-sm-12">
     <!-- Post view card -->
-<div class="card mt-3" style="max-width: 100%;">
-  <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by {{ post.author }} {{ post.created_on }}</h6>
-    <h5 class="card-title">{{ post.title }}</h5>
-    <p class="card-text">{{ post.content | safe }}</p>
-    {% if user.is_authenticated %}
-    <div class="form-group">
-    <form class="d-inline" action="{% url 'post_upvote' post.slug %}" method="POST">
-      {% csrf_token %}  
-      {% if upvoted %}  
-  
-      <button type="submit" name="newspost_id" value="{{ post.slug }}"  class="btn">
-        <i class="bi bi-arrow-up-circle-fill"></i>
-      </button>
-      <span class="text-secondary">{{ post.number_of_upvotes }}</span>
-  
-      {% else %}  
-  
-      <button type="submit" name="newspost_id" value="{{ post.slug }}"  class="btn">
-        <i class="bi bi-arrow-up-circle"></i>
-      </button>
-      <span class="text-secondary">{{ post.number_of_upvotes }}</span>
-      {% endif %}  
-    </form>
-  </div>
-    {% else %}
-    <span class="text-secondary"><i class="bi bi-arrow-up-circle"></i></span>
-    <span class="text-secondary">{{ post.number_of_upvotes }}</span>
-    {% endif %}
-    
-    <p><i class="bi bi-chat-left"></i> {{number_of_comments}} Comments</p>
+    <div class="card mt-3" style="max-width: 100%;">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted"><strong>{{post.topic}}</strong> Posted by {{ post.author }}
+          {{ post.created_on }}</h6>
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content | safe }}</p>
 
-    {% if request.user == post.author %}
-    <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
-    <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
-    {% endif %}
-  </div>
+        <!-- Checks if user is authenitcated before allowing them to upvote-->
+        {% if user.is_authenticated %}
+        <div class="form-group">
+          <form class="d-inline" action="{% url 'post_upvote' post.slug %}" method="POST">
+            {% csrf_token %}
+            <!-- if the user has upvoted displays the filled upvote arrow-->
+            {% if upvoted %}
+            <button type="submit" name="newspost_id" value="{{ post.slug }}" class="btn">
+              <i class="bi bi-arrow-up-circle-fill"></i>
+            </button>
+            <span class="text-secondary">{{ post.number_of_upvotes }}</span>
+            <!-- displays the unfilled arrow if the user has not upvoted-->
+            {% else %}
 
-  {% if request.user.is_authenticated %}
-  <div class="card-body">
-    <p>Comment as {{ request.user }}</p>
-    <form method="POST" action="">
-      {% csrf_token %}
-      {{ comment_form }}
-      <button type="submit" class="btn btn-dark">Comment</button>
-    </form>
-  </div>
-  {% endif %}
-    
-    <hr>
-    <div class="card-body">
-      <h2 style="text-align: center;">Comments</h2>
-    </div>
-    {% for comment in comments %}
-    <div class="card">
-    <div class="card-body">
-      <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong> {{ comment.created_on|timesince }}</h6>
-      <p class="card-text">{{ comment.body | safe }}</p>
+            <button type="submit" name="newspost_id" value="{{ post.slug }}" class="btn">
+              <i class="bi bi-arrow-up-circle"></i>
+            </button>
+            <span class="text-secondary">{{ post.number_of_upvotes }}</span>
+            {% endif %}
+          </form>
+        </div>
+        {% else %}
+        <span class="text-secondary"><i class="bi bi-arrow-up-circle"></i></span>
+        <span class="text-secondary">{{ post.number_of_upvotes }}</span>
+        {% endif %}
 
-      {% if request.user == comment.user %}
-      <a href="{{ comment.id }}/comment_update/" class="btn btn-primary">Edit</a>
-      <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
+        <p><i class="bi bi-chat-left"></i> {{number_of_comments}} Comments</p>
+
+        <!-- Checks if post belongs to the user before displaying-->
+        {% if request.user == post.author %}
+        <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'post_delete' post.slug %}" class="btn btn-dark">Delete</a>
+        {% endif %}
+      </div>
+
+
+      <!-- Hides Comment Form unless User is signed in-->
+      {% if request.user.is_authenticated %}
+      <div class="card-body">
+        <p>Comment as {{ request.user }}</p>
+        <form method="POST" action="">
+          {% csrf_token %}
+          {{ comment_form }}
+          <button type="submit" class="btn btn-dark">Comment</button>
+        </form>
+      </div>
       {% endif %}
+
+      <hr>
+      <div class="card-body">
+        <h2 style="text-align: center;">Comments</h2>
+      </div>
+      {% for comment in comments %}
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted"><strong>{{ comment.user }}</strong>
+            {{ comment.created_on|timesince }}</h6>
+          <p class="card-text">{{ comment.body | safe }}</p>
+
+          <!-- Checks if comments belong to the user before displaying-->
+          {% if request.user == comment.user %}
+          <a href="{{ comment.id }}/comment_update/" class="btn btn-primary">Edit</a>
+          <a href="{{ comment.id }}/comment_delete/" class="btn btn-dark">Delete</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
     </div>
-  </div>
-    {% endfor %}
-</div>
 
   </div>
 
@@ -91,43 +99,18 @@
     </div>
     {% endif %}
 
-    <!-- basic card-->
-<div class="card mt-3" style="width: 18rem;">
-  <div class="card-body">
-    <h3 class="card-title">Reminder to be polite</h3>
-    <p class="card-text">Show respect for people's opinions, ideas, language, attitude to life, personal preferences.</p>
-  </div>
-</div>
+    <!-- Politeness Card-->
+    <div class="card mt-3" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title">Reminder to be polite</h3>
+        <p class="card-text">Show respect for people's opinions, ideas, language, attitude to life, personal
+          preferences.</p>
+      </div>
+    </div>
 
   </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {% endblock %}
