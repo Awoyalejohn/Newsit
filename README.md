@@ -407,7 +407,7 @@ The SQL Relational database used was PostgreSQL
     
     ```
     
-9.  Then add the new app to [settings.py](http://settings.py) file
+9.  Then add the new app to settings.py file
     
     ```bash
     INSTALLED_APPS = [
@@ -448,21 +448,21 @@ The SQL Relational database used was PostgreSQL
     
 17.  Go to the settings tab
     
-18.  click on the reveal Config Vars button
+18.  Click on the reveal Config Vars button
     
-19.  copy the Postgres URL value to the right of the Database_url key
+19.  Copy the Postgres URL value to the right of the Database_url key
     
 20.  Go back to the Django project on the code editor
     
-21.  Create an [env.py](http://env.py) file in the same directory as your [manage.py](http://manage.py) file.
+21.  Create an env.py file in the same directory as your manage.py file.
     
-22.  Add in these environment variables for the database and secret key inside the [env.py](http://env.py) file.
+22.  Add in these environment variables for the database and secret key inside the env.py file.
     
 23.  Now copy the name value of your secret key and paste it into config vars on Heroku then click add.
     
-24.  Go to the [settings.py](http://settings.py) file
+24.  Go to the settings.py file
     
-25.  Add these imports at the top of the [settings.py](http://settings.py) file.
+25.  Add these imports at the top of the settings.py file.
     
     ```python
     from pathlib import Path
@@ -473,9 +473,9 @@ The SQL Relational database used was PostgreSQL
     
     ```
     
-26.  Then go to the insecure SECRET-KEY in [settings.py](http://settings.py) and change its value to target the secret key in the [env.py](http://env.py) file instead.
+26.  Then go to the insecure SECRET-KEY in settings.py and change its value to target the secret key in the env.py file instead.
     
-27.  Then go down to the database section in [settings.py](http://settings.py). Comments out the default DATABASES python dictionary with `ctrl +/` then add your own database link to the [env.py](http://env.py) file.
+27.  Then go down to the database section in settings.py. Comments out the default DATABASES python dictionary with `ctrl +/` then add your own database link to the env.py file.
     
 28.  Now you need to migrate changes again
     
@@ -490,7 +490,7 @@ The SQL Relational database used was PostgreSQL
     
 31.  Now you just need to log into your Cloudinary account and copy your API Emviroment Variable.
     
-32.  Go back to the Django project then go to the [env.py](http://env.py) file.
+32.  Go back to the Django project then go to the env.py file.
     
 33.  Then paste it in as a new environment variable. Make sure to remove the `Cloudinary_url=` part at the beginning of the value or else it won’t be valid.
     
@@ -498,9 +498,9 @@ The SQL Relational database used was PostgreSQL
     
 35.  Now add another config var DISABLE_COLLECTSTATIC
     
-36.  Then go back to the Django project on your code editor. Go to the [settings.py](http://settings.py) file.
+36.  Then go back to the Django project on your code editor. Go to the settings.py file.
     
-37.  Add the cloudinary libraries to [settings.py](http://settings.py)
+37.  Add the cloudinary libraries to settings.py
     
     ```bash
     INSTALLED_APPS = [
@@ -518,7 +518,7 @@ The SQL Relational database used was PostgreSQL
     
 38.  Now we just need to tell Django to use Cloudinary to store our media and static files.
     
-39.  Go to the static files section that is near the end of the [settings.py](http://settings.py) file. Then add in these links.
+39.  Go to the static files section that is near the end of the settings.py file. Then add in these links.
     
     ```python
     # Static files (CSS, JavaScript, Images)
@@ -536,7 +536,7 @@ The SQL Relational database used was PostgreSQL
     
 40.  Now you need to tell Django where the templates will be stored.
     
-41.  Back to the top of [settings.py](http://settings.py) file in the base directory section. Add the templates directory variable
+41.  Back to the top of settings.py file in the base directory section. Add the templates directory variable
     
     ```python
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -545,7 +545,7 @@ The SQL Relational database used was PostgreSQL
     
     ```
     
-42.  Then go to the middle section in [settings.py](http://settings.py) you need to find the templates list and add TEMPLATES_DIR to the DIRS KEY in the dictionary.
+42.  Then go to the middle section in settings.py you need to find the templates list and add TEMPLATES_DIR to the DIRS KEY in the dictionary.
     
     ```python
     TEMPLATES = [
@@ -566,7 +566,7 @@ The SQL Relational database used was PostgreSQL
     
     ```
     
-43.  Now go to the ALLOWED_HOSTS variable in the [settings.py](http://settings.py) file and add the Heroku host name.
+43.  Now go to the ALLOWED_HOSTS variable in the settings.py file and add the Heroku host name.
     
     ```python
     # SECURITY WARNING: don't run with debug turned on in production!
@@ -632,7 +632,7 @@ The SQL Relational database used was PostgreSQL
     
     ```
 ### Production
-1.  Go to the [settings.py](http://settings.py) file and set DEBUG to True
+1.  Go to the settings.py file and set DEBUG to True
     
     ```python
     DEBUG = TRUE
