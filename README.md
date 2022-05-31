@@ -334,3 +334,14 @@ The SQL Relational database used was PostgreSQL
 | Django Message | When user Creates a comment | Message pops up with a success confirmation message | √    |
 | Django Message | When user edits a comment   | Message pops up with a success confirmation message | √    |
 | Django Message | When user deletes a comment | Message pops up with a success confirmation message | √    |
+## Bugs
+### Fixed
+- Django Generic list view does a lot things that is not clear and raised errors when a page with a slug URL was clicked on. Switching to a normal view fixed the issue.
+
+### Remaining found Bugs
+- Posts and comments aren’t ordered by most recernt even though the meta class is set to order by created on date
+
+- Likes and Comments don't show on homepage
+
+- Trying to edit or delete comments on profile pages causes errors
+
