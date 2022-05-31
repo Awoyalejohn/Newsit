@@ -345,3 +345,354 @@ The SQL Relational database used was PostgreSQL
 
 - Trying to edit or delete comments on profile pages causes errors
 
+## Deployment
+### Development
+
+1.  Create Repo
+    
+2.  Clone Repo
+    
+3.  Install python
+    
+4.  Install Django and the supporting libraries
+    
+    ```bash
+    pip3 install django gunicorn
+    pip3 install dj_database_url psycopg2
+    pip3 install dj3-cloudinary-storage
+    
+    ```
+    
+5.  Create requirements file for Heroku
+    
+    ```bash
+    pip3 freeze --local > requirements.txt
+    
+    ```
+    
+6.  like this
+    
+    ```bash
+    asgiref==3.5.2
+    backports.zoneinfo==0.2.1
+    cloudinary==1.29.0
+    dj-database-url==0.5.0
+    dj3-cloudinary-storage==0.0.6
+    Django==4.0.4
+    django-allauth==0.50.0
+    django-autoslug==1.9.8
+    django-crispy-forms==1.14.0
+    django-summernote==0.8.20.0
+    gunicorn==20.1.0
+    oauthlib==3.2.0
+    psycopg2==2.9.3
+    PyJWT==2.4.0
+    python3-openid==3.2.0
+    requests-oauthlib==1.3.1
+    sqlparse==0.4.2
+    
+    ```
+    
+7.  Create a new Django Project
+    
+    ```bash
+    django-admin startproject <projectName>
+    
+    ```
+    
+8.  Create a new Django app
+    
+    ```bash
+    python3 manage.py startapp <appName>
+    
+    ```
+    
+9.  Then add the new app to [settings.py](http://settings.py) file
+    
+    ```bash
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'newapp', #new goes here
+    ]
+    
+    ```
+    
+10.  Now you need to migrate changes
+    
+    ```bash
+    python3 manage.py migrate
+    
+    ```
+    
+11.  then run the project to make sure everything is working okay
+    
+    ```bash
+    python3 manage.py runserver
+    
+    ```
+    
+12.  Then you sign up or login into Heroku to create the app
+    
+13.  Create a new app on Heroku by clicking the new app button
+    
+14.  Go to the resources tab
+    
+15.  Search for ‘Heroku Postgres’
+    
+16.  Click the submit order form button
+    
+17.  Go to the settings tab
+    
+18.  click on the reveal Config Vars button
+    
+19.  copy the Postgres URL value to the right of the Database_url key
+    
+20.  Go back to the Django project on the code editor
+    
+21.  Create an [env.py](http://env.py) file in the same directory as your [manage.py](http://manage.py) file.
+    
+22.  Add in these environment variables for the database and secret key inside the [env.py](http://env.py) file.
+    
+23.  Now copy the name value of your secret key and paste it into config vars on Heroku then click add.
+    
+24.  Go to the [settings.py](http://settings.py) file
+    
+25.  Add these imports at the top of the [settings.py](http://settings.py) file.
+    
+    ```python
+    from pathlib import Path
+    import os
+    import dj_database_url
+    if os.path.isfile('env.py'):
+        import env
+    
+    ```
+    
+26.  Then go to the insecure SECRET-KEY in [settings.py](http://settings.py) and change its value to target the secret key in the [env.py](http://env.py) file instead.
+    
+27.  Then go down to the database section in [settings.py](http://settings.py). Comments out the default DATABASES python dictionary with `ctrl +/` then add your own database link to the [env.py](http://env.py) file.
+    
+28.  Now you need to migrate changes again
+    
+    ```bash
+    python3 manage.py migrate
+    
+    ```
+    
+29.  You can go back to Heroku app now and click the resources tab
+    
+30.  Then click on the Heroku Postgres add-on to check that the database is working.
+    
+31.  Now you just need to log into your Cloudinary account and copy your API Emviroment Variable.
+    
+32.  Go back to the Django project then go to the [env.py](http://env.py) file.
+    
+33.  Then paste it in as a new environment variable. Make sure to remove the `Cloudinary_url=` part at the beginning of the value or else it won’t be valid.
+    
+34.  Then copy the same key and value to Heroku config vars
+    
+35.  Now add another config var DISABLE_COLLECTSTATIC
+    
+36.  Then go back to the Django project on your code editor. Go to the [settings.py](http://settings.py) file.
+    
+37.  Add the cloudinary libraries to [settings.py](http://settings.py)
+    
+    ```bash
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'cloudinary',
+         'news', #new goes here
+    ]
+    
+    ```
+    
+38.  Now we just need to tell Django to use Cloudinary to store our media and static files.
+    
+39.  Go to the static files section that is near the end of the [settings.py](http://settings.py) file. Then add in these links.
+    
+    ```python
+    # Static files (CSS, JavaScript, Images)
+    # <https://docs.djangoproject.com/en/4.0/howto/static-files/>
+    
+    STATIC_URL = '/static/'
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATIC_ROOT = [os.path.join(BASE_DIR, 'staticfiles')]
+    
+    MEDIA_URL = '/media/'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    
+    ```
+    
+40.  Now you need to tell Django where the templates will be stored.
+    
+41.  Back to the top of [settings.py](http://settings.py) file in the base directory section. Add the templates directory variable
+    
+    ```python
+    # Build paths inside the project like this: BASE_DIR / 'subdir'.
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+    
+    ```
+    
+42.  Then go to the middle section in [settings.py](http://settings.py) you need to find the templates list and add TEMPLATES_DIR to the DIRS KEY in the dictionary.
+    
+    ```python
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [TEMPLATES_DIR],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
+    
+    ```
+    
+43.  Now go to the ALLOWED_HOSTS variable in the [settings.py](http://settings.py) file and add the Heroku host name.
+    
+    ```python
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
+    
+    ALLOWED_HOSTS = ['<appname>.herokuapp.com']
+    
+    ```
+    
+44.  Now you to create 3 directories; media, static, templates in the root directory.
+    
+45.  Now we nee to crate a ‘Procfile’ that contains this text
+    
+    ```
+    web: gunicorn <projectName>.wsgi
+    
+    ```
+    
+46.  Now you save all the files then use git to commit files to GitHub
+    
+    ```bash
+    git add. 
+    git commit -m "deployment commit"
+    git push
+    
+    ```
+    
+47.  Then we deploy to heroku
+    
+48.  Open the terminal.
+    
+    ```bash
+    command: heroku login -i
+    
+    ```
+    
+49.  Get your app name from heroku.
+    
+    ```bash
+    heroku apps
+    
+    ```
+    
+50.  Set the heroku remote. (Replace <app_name> with your actual app name and remove the <> characters)
+    
+    ```bash
+    heroku git:remote -a <app_name>
+    
+    ```
+    
+51.  Add and commit any changes to your code if applicable
+    
+    ```bash
+    command: git add . && git commit -m "Deploy to Heroku via CLI"
+    
+    ```
+    
+52.  Push to both GitHub and Heroku
+    
+    ```bash
+    git push origin main
+    git push heroku main
+    
+    ```
+### Production
+1.  Go to the [settings.py](http://settings.py) file and set DEBUG to True
+    
+    ```python
+    DEBUG = TRUE
+    
+    ```
+    
+2.  Then below that add X_FRAME_OPTIONS = ‘SAMEORIGIN’
+    
+    ```python
+    X_FRAME_OPTIONS = 'SAMEORIGIN'
+    
+    ```
+    
+3.  Then you save eve thing then commit then push to GitHub
+    
+    ```bash
+    git add .
+    git commit -m "commit message"
+    git push
+    
+    ```
+    
+4.  Then head over to your Heroku app on the Heroku website.
+    
+5.  Go to settings reveal config vars then remove DISABLE_COLLECTSTATIC variable
+    
+6.  Then deploy to Heroku
+    
+7.  Open the terminal.
+    
+    ```bash
+    command: heroku login -i
+    
+    ```
+    
+8.  Get your app name from Heroku.
+    
+    ```bash
+    heroku apps
+    
+    ```
+    
+9.  Set the Heroku remote. (Replace <app_name> with your actual app name and remove the <> characters)
+    
+    ```bash
+    heroku git:remote -a <app_name>
+    
+    ```
+    
+10.  Add and commit any changes to your code if applicable
+    
+    ```bash
+    command: git add . && git commit -m "Deploy to Heroku via CLI"
+    
+    ```
+    
+11.  Push to both GitHub and Heroku
+    
+    ```bash
+    git push origin main
+    git push heroku main
+    
+    ```
