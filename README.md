@@ -707,7 +707,7 @@ The SQL Relational database used was PostgreSQL
 -   Code for styling Django forms with Bootstrap is from the [Codemy blog video](https://www.youtube.com/watch?v=6-XXvUENY_8)
 -   Code for creating a form post that sets the currently [logged in use](https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user)
 -   Code used to redirect to [same page](https://stackoverflow.com/questions/39560175/redirect-to-same-page-after-post-method-using-class-based-views)
--   Filter & Search functionality is from T[raversy Media’s django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
+-   Filter & Search functionality is from [Traversy Media’s django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
 -   Adding [Django message](%28https://youtu.be/PtQiiknWUcI?t=7582%29%5Bhttps://youtu.be/PtQiiknWUcI?t=7582) with bootstrap to trigger after certain condition bootstrap messages video
 -   Code for creating a user profile pages is from Traversy Media’s [django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
 
