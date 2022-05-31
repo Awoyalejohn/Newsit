@@ -3,4 +3,4 @@ Tech Discus is a website where people can talk about all things tech. It's a gre
 
 The live link can be found here - [https://techdisqus.herokuapp.com/](https://techdisqus.herokuapp.com/)
 
-![TD website responsive mockup](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/td-devices.png
+![TD website responsive mockup](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/td-devices.png)
