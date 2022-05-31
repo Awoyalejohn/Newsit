@@ -201,3 +201,136 @@ The SQL Relational database used was PostgreSQL
 ### Database
 
 -   PostgresSQL
+## Testing
+### lighthouse
+![lighthouse](link)
+### Manual Testing
+#### Navigation
+| Test      | Action                                  | Expected Result                      | Pass |
+|-----------|-----------------------------------------|--------------------------------------|------|
+| Logo      | Click “Tech Discuss”                    | Sends user to the home page          | √    |
+| Plus Icon | Click “Plus Icon”                       | Sends user to the post create page   | √    |
+| Home      | Click “Home”                            | Sends user to the home page          | √    |
+| Profile   | Click “Profile”                         | Sends user to the profile page       | √    |
+| Logout    | Click “Logout”                          | Sends user to the sign out page      | √    |
+| Search    | Search for a post                       | Displays posts related to the search | √    |
+| Sign up   | Click “Sign up”                         | Sends user to the sign up page       | √    |
+| Login     | Click “Login”                           | Sends user to the sign in page       | √    |
+| Plus      | Visit page logged in                    | Displays plus icon                   | √    |
+| Profile   | Visit page logged in                    | Displays profile                     | √    |
+| Logout    | Visit page logged in                    | Displays logout                      | √    |
+| Plus      | Visit page not logged in                | Hides plus icon                      | √    |
+| Profile   | Visit page not logged in                | Hides profile                        | √    |
+| Logout    | Visit page not logged in                | Hides logout                         | √    |
+| Sign up   | Visit page not logged in                | Displays sign up                     | √    |
+| Login     | Visit page not logged in                | Displays login                       | √    |
+| Sign up   | Visit page logged in                    | Hides sign up                        | √    |
+| Login     | Visit page logged in                    | Hides login                          | √    |
+| Home      | Tablet/ mobile screen view logged in    | Hides Home in navigation bar         | √    |
+| Profile   | Tablet/ mobile screen view logged in    | Hides Profile in navigation bar      | √    |
+| Logout    | Tablet/ mobile screen view logged in    | Hides Logout in navigation bar       | √    |
+| Sign up   | Tablet/ mobile screen view unauthorised | Hides Sign up in navigation bar      | √    |
+| Login     | Tablet/ mobile screen view unauthorised | Hides Login in navigation bar        | √    |
+#### Homepage
+| Test               | Action                     | Expected Result                                  | Pass |
+|--------------------|----------------------------|--------------------------------------------------|------|
+| Create Post button | Click “Create Post button” | Sends user to the post create page               | √    |
+| User link          | Click “User link”          | Sends user to the clicked on user’s profile page | √    |
+| Post link          | Click “Post link”          | Sends user to the clicked on post’s display page | √    |
+| Edit               | Click “Edit”               | Sends user to the clicked on post’s edit page    | √    |
+| Delete             | Click “Delete”             | Sends user to the clicked on post’s delete page  | √    |
+| Topic              | Click a topic              | Displays posts related that topic                | √    |
+| Create Post button | Visit page logged in       | Displays Create Post button                      | √    |
+| Create Post button | Visit page not logged in   | Hides Create Post button                         | √    |
+| Edit               | Visit page logged in       | Displays only on posts by logged in user         | √    |
+| Edit               | Visit page logged out      | Hides Edit                                       | √    |
+| Delete             | Visit page logged in       | Displays only on posts by logged in user         | √    |
+| Delete             | Visit page logged out      | Hides Delete                                     | √    |
+| Side panel         | Visit page logged in       | Displays only Categories                         | √    |
+| Side panel         | Visit page logged out      | Displays welcome card and Categories             | √    |
+| Side panel         | mobile screen view         | Hides side panel                                 | √    |
+#### Create Post page
+| Test            | Action                                 | Expected Result                        | Pass |
+|-----------------|----------------------------------------|----------------------------------------|------|
+| Form            | Fill in form correctly then click post | Adds a new post to the homepage        | √    |
+| Form            | Leave form empty then click post       | Prompts user to fill in fields on form | √    |
+| Quick tips card | Desktop view                           | Displays Quick tips card next to form  | √    |
+| Quick tips card | Tablet/ mobile screen view             | Hides Quick tips card                  | √    |
+#### Post display page
+| Test                      | Action                                    | Expected Result                                 | Pass |
+|---------------------------|-------------------------------------------|-------------------------------------------------|------|
+| Upvote                    | click upvote logged in                    | increments by 1                                 | √    |
+| Upvote                    | click upvote logged out                   | nothing happens                                 | √    |
+| Edit button on post       | Visit page logged in                      | Displays only on posts by logged in user        | √    |
+| Edit button on post       | Visit page logged out                     | Hides Edit button                               | √    |
+| Edit button on post       | Click “Edit”                              | Sends user to the clicked on post’s edit page   | √    |
+| Delete button on post     | Visit page logged in                      | Displays only on posts by logged in user        | √    |
+| Delete button on post     | Visit page logged out                     | Hides Delete button                             | √    |
+| Delete button on post     | Click “Delete”                            | Sends user to the clicked on post’s delete page | √    |
+| Comment form              | Visit page logged in                      | Displays comment form                           | √    |
+| Comment form              | Visit page logged out                     | Hides comment form                              | √    |
+| Comment form              | Fill in form correctly then click comment | Adds a new comment to that post page            | √    |
+| Comment form              | Leave form empty then click comment       | Prompts user to fill in fields on form          | √    |
+| Edit button in comments   | Visit page logged in                      | Displays only on comments by logged in user     | √    |
+| Edit button in comments   | Visit page logged out                     | Hides Edit button                               | √    |
+| Delete button in comments | Visit page logged in                      | Displays only on comments by logged in user     | √    |
+| Delete button in comments | Visit page logged out                     | Hides Delete button                             | √    |
+| Side panel                | Visit page logged in                      | Displays only Polite reminder card              | √    |
+| Side panel                | Visit page logged out                     | Displays Welcome and Polite reminder card       | √    |
+| Side panel                | Desktop screen view                       | Displays side panel                             | √    |
+| Side panel                | Tablet/ mobile screen view                | Hides side panel                                | √    |
+#### Profile page
+| Test                   | Action                 | Expected Result                                  | Pass |
+|------------------------|------------------------|--------------------------------------------------|------|
+| User link on user post | Click “User link”      | Sends user to the clicked on user’s profile page | √    |
+| Post link on post      | Click “Post link”      | Sends user to the clicked on post’s display page | √    |
+| Edit button on post    | Click “Edit”           | Sends user to the clicked on post’s edit page    | √    |
+| Delete button on post  | Click “Delete”         | Sends user to the clicked on post’s delete page  | √    |
+| Edit button on post    | User is authorised     | Displays edit button                             | √    |
+| Delete button on post  | User is authorised     | Displays delete button                           | √    |
+| Edit button on post    | User is not authorised | Hides edit button                                | √    |
+| Delete button on post  | User is not authorised | Hides delete button                              | √    |
+#### Edit post page
+| Test | Action             | Expected Result                        | Pass |
+|------|--------------------|----------------------------------------|------|
+| Form | fill in form edits | posts same page, but now edited        | √    |
+| Form | leave fields empty | Prompts user to fill in fields on form | √    |
+#### Delete post page
+| Test           | Action                 | Expected Result                                  | Pass |
+|----------------|------------------------|--------------------------------------------------|------|
+| Go back button | Click “Go back button” | Sends user back to their last page               | √    |
+| Confirm        | Click “Confirm”        | Deletes the post then redirects back to homepage | √    |
+#### Edit comment page
+| Test | Action             | Expected Result                                                | Pass |
+|------|--------------------|----------------------------------------------------------------|------|
+| Form | fill in form edits | edits the comment and sends user back to the page they were on | √    |
+| Form | leave fields empty | Prompts user to fill in fields on form                         | √    |
+#### Delete comment page
+| Test           | Action                 | Expected Result                                                               | Pass |
+|----------------|------------------------|-------------------------------------------------------------------------------|------|
+| Go back button | Click “Go back button” | Sends user back to their last page                                            | √    |
+| Confirm        | Click “Confirm button” | Deletes the comment then redirects user back to the page the comment was from | √    |
+#### Django’s Allauth login, logout, and sign up pages
+| Test         | Action                                      | Expected Result                                               | Pass |
+|--------------|---------------------------------------------|---------------------------------------------------------------|------|
+| Sign in form | Fill in fields correctly then click sign in | User gets logged in                                           | √    |
+| Sign in form | Leave fields empty then click sign in       | Nothing                                                       | √    |
+| Sign in form | Fill in fields with incorrect info          | Prompts user to fill in fields with correct info              | √    |
+| Sign in form | Click sign up link                          | Sends user to signup page instead                             | √    |
+| Logout form  | Click sing out Button                       | signs user out                                                | √    |
+| Sign up form | Fill in fields correctly then click sign up | Creates a new user for the website and sends them to homepage | √    |
+| Sign up form | Leave fields empty then click sign in       | Nothing                                                       | √    |
+| Sign up form | Fill in fields with incorrectly             | Prompts user to fill in fields correctly                      | √    |
+| Sign up form | Click sign in link                          | Sends user to sign in page instead                            | √    |
+#### Django Messages
+| Test           | Action                      | Expected Result                                     | Pass |
+|----------------|-----------------------------|-----------------------------------------------------|------|
+| Django Message | When user Logs in           | Message pops up with a success confirmation message | √    |
+| Django Message | When user Logs out          | Message pops up with a success confirmation message | √    |
+| Django Message | When user Signs up          | Message pops up with a success confirmation message | √    |
+| Django Message | When user Creates a post    | Message pops up with a success confirmation message | √    |
+| Django Message | When user edits a post      | Message pops up with a success confirmation message | √    |
+| Django Message | When user deletes a post    | Message pops up with a success confirmation message | √    |
+| Django Message | When user Creates a comment | Message pops up with a success confirmation message | √    |
+| Django Message | When user edits a comment   | Message pops up with a success confirmation message | √    |
+| Django Message | When user deletes a comment | Message pops up with a success confirmation message | √    |
