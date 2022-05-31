@@ -712,7 +712,7 @@ The SQL Relational database used was PostgreSQL
 -   Code for creating a user profile pages is from Traversy Media’s [django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
 
 ### Content
-The posts on the website to fill it with usetrcontent came from these links
+The posts on the website to fill it with user content came from these links
 
 -   The cheap [GPU post](https://www.techradar.com/news/amd-could-be-readying-a-super-cheap-gpu-to-tackle-nvidias-rumored-gtx-1630) 
 -   The posts about Microsoft’s [windows server drop](https://www.csoonline.com/article/3662069/microsoft-security-vulnerabilities-drop-after-five-year-rise.html)
