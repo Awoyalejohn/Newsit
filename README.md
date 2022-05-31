@@ -203,7 +203,7 @@ The SQL Relational database used was PostgreSQL
 -   PostgresSQL
 ## Testing
 ### lighthouse
-![lighthouse](link)
+![lighthouse](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/lighthouse-mobile.png)
 ### Manual Testing
 #### Navigation
 | Test      | Action                                  | Expected Result                      | Pass |
