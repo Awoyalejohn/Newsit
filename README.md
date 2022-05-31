@@ -158,3 +158,46 @@ The project features on GitHub was used to create a Kanban board that lists all 
 -   Allows users to put upvotes on a post
 ### Database
 The SQL Relational database used was PostgreSQL
+## Technologies Used
+### languages used
+
+-   HTML
+-   CSS
+-   JavaScript
+-   Python
+
+### Workspace
+
+-   Gitpod
+
+### Version Control
+
+-   Git
+-   GitHub
+
+### Wireframe
+
+-   Figma
+-   DrawSQL
+
+### Test Responsiveness
+
+-   Chrome Developer tools
+
+### Site Design
+
+-   Bootstrap(5.0)
+
+### Develpment
+
+-   Django
+
+### Hosting
+
+-   Heroku
+-   Gunicorn
+-   Cloudinary
+
+### Database
+
+-   PostgresSQL
