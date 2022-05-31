@@ -704,7 +704,7 @@ The SQL Relational database used was PostgreSQL
 -   Using related names in models is takent from a [Reddit](https://www.reddit.com/r/django/comments/76a7uw/related_name_in_modelspy/) answer in the comments
 -   Code for slug routing is from [Vegibit](https://vegibit.com/slug-based-routing-in-django/%29)
 -   Code on how to use auto [slug](https://django-autoslug.readthedocs.io/en/latest/)
--   Code for styling Django forms with Bootstrap is from the [Codemy blog video](%28https://www.youtube.com/watch?v=6-XXvUENY_8)
+-   Code for styling Django forms with Bootstrap is from the [Codemy blog video](https://www.youtube.com/watch?v=6-XXvUENY_8)
 -   Code for creating a form post that sets the currently [logged in use](https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user)
 -   Code used to redirect to [same page](https://stackoverflow.com/questions/39560175/redirect-to-same-page-after-post-method-using-class-based-views)
 -   Filter & Search functionality is from T[raversy Media’s django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
