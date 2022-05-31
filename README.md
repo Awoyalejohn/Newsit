@@ -91,7 +91,7 @@ The website uses Helvetica Neue as the main font-family and it is supplied by Bo
 Wireframes were made with Figma to get a better idea on how things would look layout-wise on the website. The website is meant to look similar to Reddit, as it is a news posting website based on Reddit there are cards with post content inside them just like Reddit.
 ![wireframe](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/wireframe.png)
 ## Agile
-The project features on GitHub was used to create a Kanban board that lists all of the user stories. Each user story has task that the user might be able to do on the website once the functionality has been added. All the must have user stories have been completed and the some of the user stories that are should have and could have will get implemented future when there is more time.
+The projects feature on GitHub was used to create a Kanban board that lists all of the user stories. Each user story has a task that the user might be able to do on the website once the functionality has been added. All the must have user stories have been completed and the some of the user stories that are should have and could have will get implemented in the future when there is more time.
 ![User story kanban](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/User%20stories%20kanban.png)
 ### Completed User Stories
 #### 1. Must Have 
