@@ -141,7 +141,7 @@ The project features on GitHub was used to create a Kanban board that lists all 
 -   The name attribute has a character field that allows the admin write a name for the topic.
 ### Post Model
 -   Post model allows users to make posts as authors
--   The title attribute has character field for users to be able to write title for their post.
+-   The title attribute has character field for users to be able to write a title for their post.
 -   The slug attribute has slug field that will slugify title of the post so it shows in the url
 -   The author attribute has a foreign key field that has a relationship with the User model id attribute.
 -   The topic attribute has a foreign key field that has a relationship with the Topic model id attribute.
@@ -151,56 +151,56 @@ The project features on GitHub was used to create a Kanban board that lists all 
 ### Comment Model
 -   The post attribute has a foreign key field that has a relationship with the Post model id attribute.
 -   The user attribute has a foreign key field that has a relationship with the User model id attribute.
--   The body attribute has a text filed for users to be able to write a comment.
--   The created_on attribute has a datetime field that will show the date when the comment was created.
+-   The body attribute has a text field for users to be able to write a comment.
+-   The created_on attribute has a DateTime field that will show the date when the comment was created.
 ### Upvote Model
--   The user and post attributes have man to many relationship with the User model id and Post model id
+-   The user and post attributes have many to many relationship with the User model id and Post model id
 -   Allows users to put upvotes on a post
 ### Database
 The SQL Relational database used was PostgreSQL
 ## Technologies Used
 ### languages used
 
--   HTML
--   CSS
--   JavaScript
--   Python
+-   [HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+-   [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+-   [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+-   [Python](https://www.python.org/)
 
 ### Workspace
 
--   Gitpod
+-   [Gitpod](https://gitpod.io)
 
 ### Version Control
 
--   Git
--   GitHub
+-   [Git](https://git-scm.com/)
+-   [GitHub](https://github.com/)
 
 ### Wireframe
 
--   Figma
--   DrawSQL
+-   [Figma](https://www.figma.com)
+-   [DrawSQL](https://drawsql.app/)
 
 ### Test Responsiveness
 
--   Chrome Developer tools
+-   [Chrome Developer tools](https://developer.chrome.com/docs/devtools/)
 
 ### Site Design
 
--   Bootstrap(5.0)
+-   [Bootstrap(5.0)](https://getbootstrap.com/)
 
 ### Develpment
 
--   Django
+-   [Django](https://www.djangoproject.com/)
 
 ### Hosting
 
--   Heroku
--   Gunicorn
--   Cloudinary
+-   [Heroku](https://www.heroku.com/)
+-   [Gunicorn](https://gunicorn.org/)
+-   [Cloudinary](https://cloudinary.com/)
 
 ### Database
 
--   PostgresSQL
+-   [PostgresSQL](https://www.postgresql.org/)
 ## Testing
 ### lighthouse
 ![lighthouse](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/lighthouse-mobile.png)
@@ -701,7 +701,7 @@ The SQL Relational database used was PostgreSQL
 -   The base code of the project is from Code institute’s [I Think Therefore I Blog project.](https://www.youtube.com/watch?v=kEdGDvrFSks)
 -   Cards, side panel, and footer is from [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 -   Generating upvotes is from Code institute’s [I Think Therefore I Blog project](https://www.youtube.com/watch?v=kEdGDvrFSks)
--   Using related names in models is takent from a [Reddit](https://www.reddit.com/r/django/comments/76a7uw/related_name_in_modelspy/) answer in the comments
+-   Using related names in models is taken from a [Reddit](https://www.reddit.com/r/django/comments/76a7uw/related_name_in_modelspy/) answer in the comments
 -   Code for slug routing is from [Vegibit](https://vegibit.com/slug-based-routing-in-django/%29)
 -   Code on how to use auto [slug](https://django-autoslug.readthedocs.io/en/latest/)
 -   Code for styling Django forms with Bootstrap is from the [Codemy blog video](https://www.youtube.com/watch?v=6-XXvUENY_8)
