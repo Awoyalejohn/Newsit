@@ -708,11 +708,11 @@ The SQL Relational database used was PostgreSQL
 -   Code for creating a form post that sets the currently [logged in use](https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user)
 -   Code used to redirect to [same page](https://stackoverflow.com/questions/39560175/redirect-to-same-page-after-post-method-using-class-based-views)
 -   Filter & Search functionality is from [Traversy Media’s django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
--   Adding [Django message](%28https://youtu.be/PtQiiknWUcI?t=7582%29%5Bhttps://youtu.be/PtQiiknWUcI?t=7582) with bootstrap to trigger after certain condition bootstrap messages video
+-   Adding [Django message](https://www.youtube.com/watch?v=AkkBc_d7OXk&t=5s) with bootstrap to trigger after certain condition bootstrap messages video
 -   Code for creating a user profile pages is from Traversy Media’s [django 7 hour course](https://www.youtube.com/watch?v=PtQiiknWUcI&t=7582s)
 
 ### Content
-The posts on the website to fill it with user content came from these links
+The posts on the website to fill it with usetrcontent came from these links
 
 -   The cheap [GPU post](https://www.techradar.com/news/amd-could-be-readying-a-super-cheap-gpu-to-tackle-nvidias-rumored-gtx-1630) 
 -   The posts about Microsoft’s [windows server drop](https://www.csoonline.com/article/3662069/microsoft-security-vulnerabilities-drop-after-five-year-rise.html)
