@@ -696,3 +696,24 @@ The SQL Relational database used was PostgreSQL
     git push heroku main
     
     ```
+## Credits
+### Code
+-   The base code of the project is from Code institute’s I Think Therefore I Blog project.[(2) Django Blog 001: Introduction - YouTube](https://www.youtube.com/watch?v=kEdGDvrFSks)
+-   Cards, side panel, footer is from bootstrap
+-   Generating upvotes is from Code institute’s I Think Therefore I Blog project [(2) Django Blog 001: Introduction - YouTube](https://www.youtube.com/watch?v=kEdGDvrFSks)
+-   Related names in models [](https://www.reddit.com/r/django/comments/76a7uw/related_name_in_modelspy/)[https://www.reddit.com/r/django/comments/76a7uw/related_name_in_modelspy/](https://www.reddit.com/r/django/comments/76a7uw/related_name_in_modelspy/)
+-   Code for slug routing [](https://vegibit.com/slug-based-routing-in-django/)[https://vegibit.com/slug-based-routing-in-django/](https://vegibit.com/slug-based-routing-in-django/)
+-   Code for auto slug [](https://django-autoslug.readthedocs.io/en/latest/)[https://django-autoslug.readthedocs.io/en/latest/](https://django-autoslug.readthedocs.io/en/latest/)
+-   Code for styling django forms wirh bootsrap is from codemy blog video [](https://www.youtube.com/watch?v=6-XXvUENY_8)[https://www.youtube.com/watch?v=6-XXvUENY_8](https://www.youtube.com/watch?v=6-XXvUENY_8)
+-   Code Creating a form post that sets the logged in user [](https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user)[https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user](https://stackoverflow.com/questions/18246326/how-do-i-set-user-field-in-form-to-the-currently-logged-in-user)
+-   Code used to redirect to same page [](https://stackoverflow.com/questions/39560175/redirect-to-same-page-after-post-method-using-class-based-views)[https://stackoverflow.com/questions/39560175/redirect-to-same-page-after-post-method-using-class-based-views](https://stackoverflow.com/questions/39560175/redirect-to-same-page-after-post-method-using-class-based-views)
+-   Filter & Search functionality is from Traversy Media’s django 7 hour course [](https://youtu.be/PtQiiknWUcI?t=7582)[https://youtu.be/PtQiiknWUcI?t=7582](https://youtu.be/PtQiiknWUcI?t=7582)
+-   Adding Django messages is from lab of coding bootstrap messages video
+-   Code for creating a user profile pages is from Traversy Media’s django 7 hour course
+
+### Content
+The posts on the website to fill it with usetrcontent came from these links
+
+-   The cheap GPU post [](https://www.techradar.com/news/amd-could-be-readying-a-super-cheap-gpu-to-tackle-nvidias-rumored-gtx-1630)[https://www.techradar.com/news/amd-could-be-readying-a-super-cheap-gpu-to-tackle-nvidias-rumored-gtx-1630](https://www.techradar.com/news/amd-could-be-readying-a-super-cheap-gpu-to-tackle-nvidias-rumored-gtx-1630)
+-   The posts about Microsoft’s windows server drop [](https://www.csoonline.com/article/3662069/microsoft-security-vulnerabilities-drop-after-five-year-rise.html)[https://www.csoonline.com/article/3662069/microsoft-security-vulnerabilities-drop-after-five-year-rise.html](https://www.csoonline.com/article/3662069/microsoft-security-vulnerabilities-drop-after-five-year-rise.html)
+-   The post about the tiny remote controlled robot crab [](https://www.sciencedaily.com/releases/2022/05/220525151741.htm)[https://www.sciencedaily.com/releases/2022/05/220525151741.htm](https://www.sciencedaily.com/releases/2022/05/220525151741.htm)
