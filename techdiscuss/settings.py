@@ -33,7 +33,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['techdisqus.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://8000-awoyalejohn-td-cux7fgo8ltw.ws-eu46.gitpod.io']
 
 
