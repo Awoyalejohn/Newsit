@@ -5,7 +5,7 @@ Tech Discuss is a website where people can talk about all things tech. It's a gr
 
   
 
-The live link can be found here - [https://techdisqus.herokuapp.com/](https://techdisqus.herokuapp.com/)
+The live link can be found here - [https://tech-discuss.onrender.com/](https://tech-discuss.onrender.com/)
 
 ![TD website responsive mockup](https://raw.githubusercontent.com/Awoyalejohn/TD/main/static/images/td-devices.png)
 
